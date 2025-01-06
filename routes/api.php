@@ -6,7 +6,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogOutController;
 use App\Http\Controllers\TasksController;
-use App\Http\Controllers\API\TaskShareController;
+use App\Http\Controllers\TasksShareController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -21,4 +21,4 @@ Route::post('/logout', LogOutController::class)->middleware('auth:sanctum');
 Route::apiResource('/tasks', TasksController::class)->middleware('auth:sanctum');
 
 // Task Shares
-Route::middleware('auth:api')->resource('task_shares', TaskShareController::class);
+Route::apiResource('/task_shares', TasksShareController::class)->middleware('auth:sanctum');
